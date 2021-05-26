@@ -12,9 +12,7 @@ env:
 jobs:
 
   build_and_push:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: Build Image
@@ -37,8 +35,8 @@ jobs:
     needs: build_and_push
 
     steps:
-      - name: Deploy to Digital Ocean droplet via SSH action
       - uses: appleboy/ssh-action@v0.1.3
+      - name: Deploy to Digital Ocean droplet via SSH action
         with:
           HOST: ${{ secrets.HOST }}
           USERNAME: ${{ secrets.USERNAME }}
